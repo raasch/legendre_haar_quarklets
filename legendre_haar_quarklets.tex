@@ -1,0 +1,146 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{enumerate}
+\usepackage{comment}
+\usepackage{dsfont}
+
+\newtheorem{propo}{Proposition}
+\newtheorem{lemma}[propo]{Lemma}
+
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\supp}{supp}
+
+\begin{document}
+\title{Orthonormal subsets of the Legendre-Haar quarklet system}
+\author{Thorsten Raasch}
+\maketitle
+
+\begin{abstract}
+The Legendre-Haar quarklet system is a set of piecewise polynomial and globally discontinous functions on the real line with cancellation properties. As we show in this paper, the Legendre-Haar quarklet system not only contains the Haar wavelet basis and the $L_2$-normalized truncated Legendre polynomials as orthonormal subsystems, but also a variety of other orthonormal bases which are piecewise polynomial with respect to a nonuniform partition of $\mathbb R$ into dyadic subintervals.
+\end{abstract}
+
+\section{Orthogonality properties of Legendre-Haar quarklets}
+\subsection{Legendre-Haar quarklets}
+Let us first define the Legendre-Haar quarklet system. To this end, for $p\in\mathbb N_0$, let $L_p$ be the $p$-th orthogonal Legendre polynomial on $[-1,1]$ with normalization $L_p(1)=1$. It is well-known that
+\begin{equation*}
+\int_0^1 L_p(x)L_q(x)\,\mathrm dx=\begin{cases}
+\frac{2}{2p+1},&p=q,\\
+0,&p\ne q,
+\end{cases}
+\end{equation*}
+so that the truncated and renormalized Legendre polynomials
+\begin{equation}
+  \label{eq:phip}
+  \varphi_p(x):=\sqrt{2p+1}L_p(2x-1)\chi_{[0,1)}(x),\quad
+  p\in\mathbb N_0,\quad x\in\mathbb R,
+\end{equation}
+induce the orthonormal basis
+\begin{equation*}
+\big\{\varphi_p(\cdot-k):p\in\mathbb N_0,k\in\mathbb Z\big\}
+\end{equation*}
+for $L_2(\mathbb R)$. Let us call the functions $\varphi_p$ \emph{Legendre-Haar quarks}, which is motivated by the combination of Legendre polynomials $L_p$ and the Haar scaling function $\chi_{[0,1)}$. 
+
+Furthermore, let us define the \emph{Legendre-Haar quarklets}
+\begin{equation}
+  \label{eq:psip}
+  \psi_p(x):=\varphi_p(2x)-\varphi_p(2x-1),\quad
+  p\in\mathbb N_0,\quad x\in\mathbb R,
+\end{equation}
+which is a generalization of the two-scale relation $\psi_0(x)=\varphi_0(2x)-\varphi_0(2x-1)$ of Haar wavelets. The \emph{Legendre-Haar quarklet system} is then given as the set
+\begin{equation}
+\label{eq:Psi}
+\Psi:=\big\{\varphi_p(\cdot -k):p\in\mathbb N_0,k\in\mathbb Z\big\}\cup\big\{\psi_{p,j,k}:=2^{j/2}\psi_p(2^j\cdot-k):p,j,\in\mathbb N_0,k\in\mathbb Z\big\}
+\end{equation}
+of $L_2(\mathbb R)$-normalized functions. Note that $\Psi$ contains the orthonormal Haar wavelet basis
+\begin{equation*}
+\big\{\varphi_0(\cdot -k):k\in\mathbb Z\big\}\cup\big\{\psi_{0,j,k}=2^{j/2}\psi_0(2^j\cdot-k):j\in\mathbb N_0,k\in\mathbb Z\big\}
+\end{equation*}
+as well as the orthonormal basis of truncated and shifted Legendre polynomials
+\begin{equation*}
+\big\{\varphi_p(\cdot -k):p\in\mathbb N_0,k\in\mathbb Z\big\}.
+\end{equation*}
+
+\subsection{Orthogonality properties between quarks and quarklets}
+We will now collect the orthogonality properties of various subsets of the Legendre-Haar quarklet system $\Psi$ from \eqref{eq:Psi}. The following lemma covers the case $j=0$.
+\begin{lemma}\label{ortholemma}
+We have
+\begin{equation}
+  \label{eq:phipphiqorth}
+  \big\langle\varphi_p,\varphi_q(\cdot-k)\big\rangle_{L_2(\mathds R)}=\begin{cases}
+  1,&k=0\text{ and }p=q\\
+  0,&\text{otherwise}
+  \end{cases},\quad
+  p,q\in\mathbb N_0,\quad k\in\mathbb Z.
+\end{equation}
+Moreover, we have
+\begin{equation}
+  \label{eq:phipproducts}
+  \big\langle\varphi_p(2\cdot-k),\varphi_p\big\rangle_{L_2(\mathbb R)}
+  =
+  \begin{cases}
+  2^{-(p+1)},&\;k\in\{0,1\}\\
+  0,&\;\text{otherwise}
+  \end{cases},
+  \quad
+  p\in\mathbb N_0,\quad k\in\mathbb Z.
+\end{equation}
+By consequence, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarks of lower degree,
+\begin{equation}
+  \label{eq:psipphiqorth}
+  \big\langle\psi_p,\varphi_q(\cdot-k)\big\rangle_{L_2(\mathbb R)}=0,
+  \quad
+  \text{for all } 0\le q\le p,\quad k\in\mathbb Z.
+\end{equation}
+In particular, each $\psi_p$ has $p+1$ vanishing moments,
+$\langle\psi_p,r\rangle_{L_2(\mathbb R)}=0$ for all $r\in\mathbb P_p$.
+Moreover, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarklets of strictly lower degree,
+\begin{equation}
+  \label{eq:psippsiqorth}
+  \big\langle\psi_p,\psi_q(\cdot-k)\big\rangle_{L_2(\mathbb R)}=0,
+  \quad
+  \text{for all } 0\le q<p,\quad k\in\mathbb Z.
+\end{equation}
+\end{lemma}
+\begin{proof}
+  \eqref{eq:phipphiqorth} follows from $\supp\varphi_p=[0,1]$ and from the orthogonality of the Legendre polynomials. As concerns \eqref{eq:phipproducts}, let $k\in\{0,1\}$. On $\supp\varphi_p(2\cdot-k)=[\frac{k}{2},\frac{k+1}{2}]$,
+  $\varphi_p$ is a polynomial of degree $i$ the leading
+  coefficient of which coincides with $2^{-p}$ times the leading coefficient of $\varphi_p(2\cdot-k)$.
+  Since $\varphi_p(2\cdot-k)$ is orthogonal to all polynomials of degree $p-1$ on its support,
+  it follows
+  \begin{equation*}
+    \big\langle\varphi_p(2\cdot-k),\varphi_p\big\rangle_{L_2(\mathbb R)}
+    =
+    2^{-p}\big\langle\varphi_p(2\cdot-k),2^p\varphi_p\big\rangle_{L_2(\mathbb R)}
+    =
+    2^{-p}\big\|\varphi_p(2\cdot-k)\|_{L_2(\mathbb R)}^2
+    =
+    2^{-(p+1)}.
+  \end{equation*}
+  If $k\notin\{0,1\}$, the supports of $\varphi_p(2\cdot-k)$ and $\varphi_p$
+  are disjoint, hence \eqref{eq:phipproducts} follows.
+  Combining \eqref{eq:psip} with \eqref{eq:phipproducts},
+  we compute for $0\le q\le p$ and any $k\in\mathbb Z$ that
+  \begin{align*}
+    \big\langle\psi_p,\varphi_q(\cdot-k)\big\rangle_{L_2(\mathbb R)}
+    &=
+    \big\langle\varphi_p(2\cdot+2k)-\varphi_p(2\cdot+2k-1),\varphi_q\big\rangle_{L_2(\mathbb R)}
+    =0,
+  \end{align*}
+  which yields \eqref{eq:psipphiqorth} and, in turn, the vanishing moment property
+  $\psi_p\perp\mathbb P_p$. Finally, \eqref{eq:psippsiqorth} follows from \eqref{eq:phipphiqorth} after inserting the definition of $\psi_p$,
+  \begin{align*}
+  \big\langle\psi_p,\psi_q(\cdot-k)\big\rangle_{L_2(\mathbb R)}
+  &=
+  \big\langle\varphi_p(2\cdot)-\varphi_p(2\cdot-1),\varphi_q(2\cdot-2k)-\varphi_q(2\cdot-2k-1)\big\rangle_{L_2(\mathbb R)}\\
+  &=
+  0,\quad 0\le q<p,\quad k\in\mathbb Z.
+  \end{align*}
+\end{proof}
+
+
+\end{document}
