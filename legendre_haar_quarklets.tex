@@ -67,7 +67,7 @@ as well as the orthonormal basis of truncated and shifted Legendre polynomials
 
 \subsection{Orthogonality properties between quarks and quarklets}
 We will now collect the orthogonality properties of various subsets of the Legendre-Haar quarklet system $\Psi$ from \eqref{eq:Psi}. The following lemma covers the case $j=0$.
-\begin{lemma}\label{ortholemma}
+\begin{lemma}\label{lemma:ortholemma1}
 We have
 \begin{equation}
   \label{eq:phipphiqorth}
@@ -101,14 +101,17 @@ $\langle\psi_p,r\rangle_{L_2(\mathbb R)}=0$ for all $r\in\mathbb P_p$.
 Moreover, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarklets of strictly lower degree,
 \begin{equation}
   \label{eq:psippsiqorth}
-  \big\langle\psi_p,\psi_q(\cdot-k)\big\rangle_{L_2(\mathbb R)}=0,
-  \quad
-  \text{for all } 0\le q<p,\quad k\in\mathbb Z.
+  \big\langle\psi_p,\psi_q(\cdot-k)\big\rangle_{L_2(\mathbb R)}=
+  \begin{cases}
+  1,&k=0\text{ and }p=q,\\
+  0,&\text{otherwise}
+  \end{cases},\quad
+  \text{for all } 0\le q\le p,\quad k\in\mathbb Z.
 \end{equation}
 \end{lemma}
 \begin{proof}
   \eqref{eq:phipphiqorth} follows from $\supp\varphi_p=[0,1]$ and from the orthogonality of the Legendre polynomials. As concerns \eqref{eq:phipproducts}, let $k\in\{0,1\}$. On $\supp\varphi_p(2\cdot-k)=[\frac{k}{2},\frac{k+1}{2}]$,
-  $\varphi_p$ is a polynomial of degree $i$ the leading
+  $\varphi_p$ is a polynomial of degree $p$ the leading
   coefficient of which coincides with $2^{-p}$ times the leading coefficient of $\varphi_p(2\cdot-k)$.
   Since $\varphi_p(2\cdot-k)$ is orthogonal to all polynomials of degree $p-1$ on its support,
   it follows
@@ -138,9 +141,39 @@ Moreover, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarklets of s
   &=
   \big\langle\varphi_p(2\cdot)-\varphi_p(2\cdot-1),\varphi_q(2\cdot-2k)-\varphi_q(2\cdot-2k-1)\big\rangle_{L_2(\mathbb R)}\\
   &=
-  0,\quad 0\le q<p,\quad k\in\mathbb Z.
+  \begin{cases}
+  1,&k=0\text{ and }p=q,\\
+  0,&\text{otherwise}
+  \end{cases},\quad 0\le q\le p,\quad k\in\mathbb Z.
   \end{align*}
 \end{proof}
 
+As concerns the orthogonality properties between dilated quarks and quarklets, the situation is more complicated.
+\begin{lemma}
+We have
+\begin{equation}\label{eq:phipjkphippjpkpproducts}
+\langle\varphi_{p,j,k},\varphi_{p',j',k'}\rangle_{L_2(\mathbb R)}
+=
+\begin{cases}
+2^{(j-j')(p+1/2)},&2^{-j'}[k',k'+1]\subseteq 2^{-j}[k,k+1],\quad p'=p,\\
+2^{(j'-j)(p+1/2)},&2^{-j}[k,k+1]\subseteq 2^{-j'}[k',k'+1],\quad p'=p,\\
+0,&\text{otherwise}.
+\end{cases}
+\end{equation}
+\end{lemma}
+\begin{proof}
+$\supp\varphi_{p,j,k}=2^{-j}[k,k+1]$ is an interval of length $2^{-j}$. Therefore, the support sets of two different quarks $\varphi_{p,j,k}$ and $\varphi_{p',j',k'}$ either intersect on a set of Lebesgue measure zero, so that the inner product between the two quarks vanishes, or one of the two support sets is contained in the other.
+
+Without loss of generality, assume that $2^{-j'}[k',k'+1]\subseteq 2^{-j}[k,k+1]$ and, hence, $j\le j'$. Then $\varphi_{p,j,k}$ is a polynomial of degree $p$ on the support of $\varphi_{p',j',k'}$, so that the inner product between $\varphi_{p,j,k}$ and $\varphi_{p',j',k'}$ vanishes if $p'\ne p$. If $p'=p$, we can proceed just as in the proof of Lemma \ref{lemma:ortholemma1}: the leading coefficient of $\varphi_{p,j,k}=2^{j/2}\varphi_p(2^j\cdot-j)$ coincides with $2^{(j-j')(p+1/2)}$ times the leading coefficient of $\varphi_{p,j',k'}=2^{j'/2}\varphi_p(2^{j'}\cdot-k')$, so that
+\begin{align*}
+\langle\varphi_{p,j,k},\varphi_{p,j',k'}\rangle_{L_2(\mathbb R)}
+&=
+2^{(j-j')(p+1/2)}\langle 2^{(j'-j)(p+1/2)}\varphi_{p,j,k},\varphi_{p',j',k'}\rangle_{L_2(\mathds R)}\\
+&=
+2^{(j-j')(p+1/2)}\|\varphi_{p,j',k'}\|_{L_2(\mathbb R)}^2\\
+&=
+2^{(j-j')(p+1/2)}.
+\end{align*}
+\end{proof}
 
 \end{document}
