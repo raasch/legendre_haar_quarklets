@@ -5,6 +5,18 @@
 \usepackage{enumerate}
 \usepackage{comment}
 \usepackage{dsfont}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\newcommand{\ing}[1]{$\vcenter{\hbox{\includegraphics[width=16mm]{#1}}}$}
+\tikzset{
+  % style for inserting images as nodes
+  img/.style={
+    text width=16mm,
+    inner sep=0pt,
+    outer sep=0pt,
+    rectangle,
+    align=center}
+}
 
 \newtheorem{propo}{Proposition}
 \newtheorem{lemma}[propo]{Lemma}
@@ -56,14 +68,44 @@ which is a generalization of the two-scale relation $\psi_0(x)=\varphi_0(2x)-\va
 \label{eq:Psi}
 \Psi:=\big\{\varphi_p(\cdot -k):p\in\mathbb N_0,k\in\mathbb Z\big\}\cup\big\{\psi_{p,j,k}:=2^{j/2}\psi_p(2^j\cdot-k):p,j,\in\mathbb N_0,k\in\mathbb Z\big\}
 \end{equation}
-of $L_2(\mathbb R)$-normalized functions. Note that $\Psi$ contains the orthonormal Haar wavelet basis
+of $L_2(\mathbb R)$-normalized functions. Note that besides from the truncated and shifted Legendre polynomials, $\Psi$ also contains the orthonormal Haar wavelet basis
 \begin{equation*}
-\big\{\varphi_0(\cdot -k):k\in\mathbb Z\big\}\cup\big\{\psi_{0,j,k}=2^{j/2}\psi_0(2^j\cdot-k):j\in\mathbb N_0,k\in\mathbb Z\big\}
+\big\{\varphi_0(\cdot -k):k\in\mathbb Z\big\}\cup\big\{\psi_{0,j,k}=2^{j/2}\psi_0(2^j\cdot-k):j\in\mathbb N_0,k\in\mathbb Z\big\}.
 \end{equation*}
-as well as the orthonormal basis of truncated and shifted Legendre polynomials
-\begin{equation*}
-\big\{\varphi_p(\cdot -k):p\in\mathbb N_0,k\in\mathbb Z\big\}.
-\end{equation*}
+In Figure \ref{fig:quarklets}, we see some plots of the Legendre-Haar quarks and quarklets.
+
+\begin{figure}[hbt]
+\centering
+\begin{tikzpicture}
+  \matrix[matrix of nodes,nodes=img, column sep=2mm]{
+    $\varphi_p$ &
+    \ing{p0_j0_e0_k0} &
+    \ing{p1_j0_e0_k0} &
+    \ing{p2_j0_e0_k0} &
+    \ing{p3_j0_e0_k0} &
+    \ing{p4_j0_e0_k0} \\
+    $\psi_{p,0,0}$ &
+    \ing{p0_j0_e1_k0} &
+    \ing{p1_j0_e1_k0} &
+    \ing{p2_j0_e1_k0} &
+    \ing{p3_j0_e1_k0} &
+    \ing{p4_j0_e1_k0} \\
+    $\psi_{p,1,0}$ &
+    \ing{p0_j1_e1_k0} &
+    \ing{p1_j1_e1_k0} &
+    \ing{p2_j1_e1_k0} &
+    \ing{p3_j1_e1_k0} &
+    \ing{p4_j1_e1_k0} \\
+    $\psi_{p,1,1}$ &
+    \ing{p0_j1_e1_k1} &
+    \ing{p1_j1_e1_k1} &
+    \ing{p2_j1_e1_k1} &
+    \ing{p3_j1_e1_k1} &
+    \ing{p4_j1_e1_k1} \\
+  };
+\end{tikzpicture}
+\caption{\label{fig:quarklets} Some Legendre-Haar quarks $\varphi_p$ and quarklets $\psi_{p,j,k}$ with $0\le p\le 4$}
+\end{figure}
 
 \subsection{Orthogonality properties between quarks and quarklets}
 We will now collect the orthogonality properties of various subsets of the Legendre-Haar quarklet system $\Psi$ from \eqref{eq:Psi}. The following lemma covers the case $j=0$.
