@@ -7,11 +7,11 @@
 \usepackage{dsfont}
 \usepackage{tikz}
 \usetikzlibrary{matrix}
-\newcommand{\ing}[1]{$\vcenter{\hbox{\includegraphics[width=16mm]{#1}}}$}
+\newcommand{\ing}[1]{$\vcenter{\hbox{\includegraphics[width=20mm]{#1}}}$}
 \tikzset{
   % style for inserting images as nodes
   img/.style={
-    text width=16mm,
+    text width=20mm,
     inner sep=0pt,
     outer sep=0pt,
     rectangle,
@@ -26,6 +26,7 @@
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\meas}{meas}
 
 \begin{document}
 \title{Orthonormal subsets of the Legendre-Haar quarklet system}
@@ -131,7 +132,7 @@ Moreover, we have
   \quad
   p\in\mathbb N_0,\quad k\in\mathbb Z.
 \end{equation}
-By consequence, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarks of lower degree,
+By consequence, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarks of the same or of lower degree,
 \begin{equation}
   \label{eq:psipphiqorth}
   \big\langle\psi_p,\varphi_q(\cdot-k)\big\rangle_{L_2(\mathbb R)}=0,
@@ -140,7 +141,7 @@ By consequence, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarks o
 \end{equation}
 In particular, each $\psi_p$ has $p+1$ vanishing moments,
 $\langle\psi_p,r\rangle_{L_2(\mathbb R)}=0$ for all $r\in\mathbb P_p$.
-Moreover, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarklets of strictly lower degree,
+Moreover, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarklets of lower degree,
 \begin{equation}
   \label{eq:psippsiqorth}
   \big\langle\psi_p,\psi_q(\cdot-k)\big\rangle_{L_2(\mathbb R)}=
@@ -193,53 +194,40 @@ Moreover, Legendre-Haar quarklets are orthogonal to Legendre-Haar quarklets of s
   \end{cases},\quad 0\le q\le p,\quad k\in\mathbb Z.
   \end{align*}
 \end{proof}
-\pagebreak
 
-As concerns the orthogonality properties between dilated quarks and quarklets, the situation is more complicated because low-degree, fine-scale quark(let)s are in general \emph{not} orthogonal to high-degree, low-scale quark(lets). In the following lemma, we collect some positive results on orthogonality.
+As concerns the orthogonality properties between dilated quarks and quarklets, the situation is more complicated because low-degree, fine-scale quark(let)s are in general \emph{not} orthogonal to high-degree, low-scale quark(lets). In the following lemma, we collect some positive results on orthogonality between individual elements of the quarklet system $\Psi$.
 \begin{lemma}
-If $0\le p\le p'$ and $0\le j\le j'$, we have
-\begin{equation}\label{eq:phipjkphippjpkpproducts}
-\langle\varphi_{p,j,k},\varphi_{p',j',k'}\rangle_{L_2(\mathbb R)}
-=
-\begin{cases}
-2^{(j-j')(p+1/2)},&2^{-j'}[k',k'+1]\subseteq 2^{-j}[k,k+1],\quad p'=p,\\
-0,&\text{otherwise},
-\end{cases}
+Let $p,p',j,j'\ge 0$ and $k\in\mathbb Z$. Then the following implications hold true:
+\begin{equation}\label{eq:phippsippjpkporthocond}
+p'\ge p\quad\Rightarrow\quad
+\langle\varphi_p,\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}=0,
 \end{equation}
-and
-\begin{equation}\label{eq:phipjkpsippjpkpproducts}
-\langle\varphi_{p,j,k},\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}
-=
-0.
+\begin{equation}\label{eq:psipjkpsippjpkporthocond}
+\left.\begin{aligned}
+p'\ge p\wedge j'>j\\
+\text{or }p'>p\wedge j'\ge j\\
+\text{or } \meas(2^{-j}[k,k+1]\cap 2^{-j}[k',k'+1])=0
+\end{aligned}\right\}
+\quad\Rightarrow\quad
+\langle\psi_{p,j,k},\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}=0.
 \end{equation}
 \end{lemma}
 \begin{proof}
-$\supp\varphi_{p,j,k}=2^{-j}[k,k+1]$ is an interval of length $2^{-j}$. Therefore, the support sets of two different quarks $\varphi_{p,j,k}$ and $\varphi_{p',j',k'}$ with $j\le j'$ either intersect on a set of Lebesgue measure zero, or $\supp\varphi_{p',j',k'}\subseteq\supp\varphi_{p,j,k}$.
+If $p'\ge p$, then $\varphi_p$ is a polynomial of degree at most $p\le p'$ on the support of $\psi_{p',j',k'}$, so that \eqref{eq:psipphiqorth} yields $\langle\varphi_p,\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}=0$, showing \eqref{eq:phippsippjpkporthocond}.
 
-Assume now that $2^{-j'}[k',k'+1]\subseteq 2^{-j}[k,k+1]$ and let $0\le p\le p'$. Then $\varphi_{p,j,k}$ is a polynomial of degree $p$ on the support of $\varphi_{p',j',k'}$, so that the inner product between $\varphi_{p,j,k}$ and $\varphi_{p',j',k'}$ vanishes if $p<p'$. If $p=p'$, we can proceed just as in the proof of Lemma \ref{lemma:ortholemma1}: on its support, $\varphi_{p,j,k}=2^{j/2}\varphi_p(2^j\cdot -k)$ is a polynomial of degree $p$ the leading coefficient of which coincides with $2^{(j-j')(p+1/2)}$ times the leading coefficient of $\varphi_{p,j',k'}=2^{j'/2}\varphi_p(2^{j'}\cdot-k')$, so that by the orthogonality properties of the Legendre polynomials, we get
-\begin{align*}
-\langle\varphi_{p,j,k},\varphi_{p,j',k'}\rangle_{L_2(\mathbb R)}
-&=
-2^{(j-j')(p+1/2)}\langle 2^{(j'-j)(p+1/2)}\varphi_{p,j,k},\varphi_{p',j',k'}\rangle_{L_2(\mathds R)}\\
-&=
-2^{(j-j')(p+1/2)}\|\varphi_{p,j',k'}\|_{L_2(\mathbb R)}^2\\
-&=
-2^{(j-j')(p+1/2)}.
-\end{align*}
+Similarly, if $j'>j$ and $p'\ge p$, then $\psi_{p,j,k}$ is a polynomial of degree at most $p\le p'$ on the support of $\psi_{p',j',k'}$, so that \eqref{eq:psipphiqorth} yields  $\langle\psi_{p,j,k},\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}=0$, showing the first implication in \eqref{eq:psipjkpsippjpkporthocond}.
 
-By using the two-scale relation
-\begin{equation*}
-\psi_{p',j',k'}=\frac{1}{\sqrt{2}}(\varphi_{p',j'+1,2k'}-\varphi_{p',j'+1,2k'+1})
-\end{equation*}
-and \eqref{eq:phipjkphippjpkpproducts}, we can compute inner products between Legendre-Haar quarks and quarklets of higher degree and higher scale because regardless of whether $2^{-j'}[k',k'+1]\subseteq 2^{-j}[k,k+1]$ holds true (which entails $2^{-(j'+1)}[2k',2k'+1],2^{-(j'+1)}[2k'+1,2k'+2]\subseteq 2^{-j}[k,k+1]$) or not, we get
+If $p'>p$ and $j'\ge j$, we can insert the definition \eqref{eq:Psi} of the quarklets $\psi_{p,j,k}$ and obtain
 \begin{align*}
-\langle \varphi_{p,j,k},\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}
+\lefteqn{\langle \psi_{p,j,k},\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}}\\
 &=
-\frac{1}{\sqrt{2}}
-\langle\varphi_{p,j,k},\varphi_{p',j'+1,2k'}-\varphi_{p',j'+1,2k'+1}\rangle_{L_2(\mathbb R)}
-=
-0.
+2^{(j+j')/2}\big\langle\varphi_p(2^{j+1}\cdot-2k)-\varphi_p(2^{j+1}\cdot-2k-1),\varphi_{p'}(2^{j'+1}\cdot-2k')-\varphi_{p'}(2^{j'+1}\cdot-2k'-1)\big\rangle_{L_2(\mathbb R)}\\
+&=
+2^{(j-j')/2-1}\big\langle\varphi_p(2^{j-j'}\cdot-2k)-\varphi_p(2^{j-j'}\cdot-2k-1),\varphi_{p'}(\cdot-2k')-\varphi_{p'}(\cdot-2k'-1)\big\rangle_{L_2(\mathbb R)}.
 \end{align*}
+In view of $p<p'$ and $j\le j'$, the function $\varphi_p(2^{j-j'}\cdot-2k)-\varphi_p(2^{j-j'}\cdot-2k-1)$ is a polynomial of degree at most $p$ on the respective supports of $\varphi_{p'}(\cdot-2k')$ and $\varphi_{p'}(\cdot-2k'-1)$, so that $\langle\psi_{p,j,k},\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}$ vanishes, showing the second implication in \eqref{eq:phippsippjpkporthocond}.
+
+Finally, if $\meas(2^{-j}[k,k+1]\cap 2^{-j'}[k',k'+1])=0$, the support sets of $\psi_{p,j,k}$ and $\psi_{p',j',k'}$ do at most touch, so that $\langle\psi_{p,j,k},\psi_{p',j',k'}\rangle_{L_2(\mathbb R)}=0$, and the proof is complete.
 \end{proof}
 
 \end{document}
